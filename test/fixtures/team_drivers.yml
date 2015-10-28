@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notes: MyText
+  started: 2015-10-25
+  ended: 2015-10-25
+  team: 
+  driver: 
+
+two:
+  notes: MyText
+  started: 2015-10-25
+  ended: 2015-10-25
+  team: 
+  driver: 

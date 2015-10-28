@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  position: 1
+  fastest_lap: 1
+  dnf: false
+  dnf_lap: 1
+  points: 1
+  track: 
+  driver: 
+
+two:
+  position: 1
+  fastest_lap: 1
+  dnf: false
+  dnf_lap: 1
+  points: 1
+  track: 
+  driver: 
