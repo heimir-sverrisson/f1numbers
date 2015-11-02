@@ -118,4 +118,78 @@ team_data.each do |t|
   country = Country.find_by_name(t[:country])
   Team.create!(t.except(:country).merge(country: country))
 end
+team_driver_data = [
+  { name: 'Lewis Hamilton', team: 'Mercedes' },
+  { name: 'Sebastian Vettel', team: 'Ferrari' },
+  { name: 'Nico Rosberg', team: 'Mercedes' },
+  { name: 'Kimi Räikkönen', team: 'Ferrari' },
+  { name: 'Valtteri Bottas', team: 'Williams' },
+  { name: 'Felipe Massa', team: 'Williams' },
+  { name: 'Daniil Kvyat', team: 'Red Bull Racing' },
+  { name: 'Daniel Ricciardo', team: 'Red Bull Racing' },
+  { name: 'Sergio Perez', team: 'Force India' },
+  { name: 'Max Verstappen', team: 'Toro Rosso' },
+  { name: 'Romain Grosjean', team: 'Lotus' },
+  { name: 'Nico Hulkenberg', team: 'Force India' },
+  { name: 'Felipe Nasr', team: 'Sauber' },
+  { name: 'Pastor Maldonado', team: 'Lotus' },
+  { name: 'Carlos Sainz', team: 'Toro Rosso' },
+  { name: 'Jenson Button', team: 'McLaren' },
+  { name: 'Fernando Alonso', team: 'McLaren' },
+  { name: 'Marcus Ericsson', team: 'Sauber' },
+  { name: 'Roberto Merhi', team: 'Marussia' },
+  { name: 'Alexander Rossi', team: 'Marussia' },
+  { name: 'Will Stevens', team: 'Marussia' },
+]
+team_driver_data.each do |t|
+  team = Team.find_by_name(t[:team])
+  driver = Driver.find_by_name(t[:name])
+  TeamDriver.create!(driver: driver, team: team, started: '2015-03-10', ended: '2015-11-29')
+end
+race_data = [
+  { name: 'Melbourne', laps: 58, qualifying_date: '2015-03-14 17:00',
+    race_date: '2015-03-15 16:00' },
+  { name: 'Sepang', laps: 56, qualifying_date: '2015-03-28 17:00',
+    race_date: '2015-03-29 15:00' },
+  { name: 'Shanghai', laps: 56, qualifying_date: '2015-04-11 15:00',
+    race_date: '2015-04-12 14:00' },
+  { name: 'Bahrain', laps: 57, qualifying_date: '2015-04-18 18:00',
+    race_date: '2015-04-19 18:00' },
+  { name: 'Catalunya', laps: 66, qualifying_date: '2015-05-09 14:00',
+    race_date: '2015-05-10 14:00' },
+  { name: 'Monaco', laps: 78, qualifying_date: '2015-05-23 14:00',
+    race_date: '2015-05-24 14:00' },
+  { name: 'Circuit Gilles-Villeneuve', laps: 70, qualifying_date: '2015-05-06 13:00',
+    race_date: '2015-05-07 14:00' },
+  { name: 'Grosser Preis von Österreigh', laps: 71, qualifying_date: '2015-06-20 14:00',
+    race_date: '2015-06-21 14:00' },
+  { name: 'Silverstone', laps: 52, qualifying_date: '2015-07-04 13:00',
+    race_date: '2015-07-05 13:00' },
+  { name: 'Hungaroring', laps: 69, qualifying_date: '2015-07-25 14:00',
+    race_date: '2015-07-26 14:00' },
+  { name: 'Spa', laps: 43, qualifying_date: '2015-08-22 14:00',
+    race_date: '2015-08-23 14:00' },
+  { name: 'Monza', laps: 53, qualifying_date: '2015-09-05 14:00',
+    race_date: '2015-09-06 14:00'  },
+  { name: 'Singapore', laps: 61, qualifying_date: '2015-09-19 21:00',
+    race_date: '2015-09-20 20:00' },
+  { name: 'Suzuka', laps: 53, qualifying_date: '2015-09-26 15:00',
+    race_date: '2015-09-27 14:00' },
+  { name: 'Sochi', laps: 53, qualifying_date: '2015-10-10 15:00',
+    race_date: '2015-10-11 14:00' },
+  { name: 'Austin', laps: 56, qualifying_date: '2015-10-24 13:00',
+    race_date: '2015-10-25 14:00' },
+  { name: 'Mexico City', laps: 71, qualifying_date: '2015-10-31 13:00',
+    race_date: '2015-11-01' },
+  { name: 'Interlagos', laps: 71, qualifying_date: '2015-11-14 14:00',
+    race_date: '2015-11-15 14:00' },
+  { name: 'Yas Marina', laps: 55, qualifying_date: '2015-11-28 17:00',
+    race_date: '2015-11-29 17:00' },
+]
+race_data.each do |r|
+  track = Track.find_by_name(r[:name])
+  Time.zone = track.time_zone
+  Race.create!(r.except(:name).merge(track: track))
+end
+
 puts 'Seeding done'
