@@ -11,3 +11,9 @@
 /log/*
 !/log/.keep
 /tmp
+/node_modules/*
+.DS_Store
+.env
+.ruby-version
+/.bundle
+!/log/.keep
