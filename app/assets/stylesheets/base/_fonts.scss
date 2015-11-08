@@ -1,0 +1,45 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:font-url('icomoon.eot');
+	src:font-url('icomoon.eot') format('embedded-opentype'),
+		font-url('icomoon.ttf') format('truetype'),
+		font-url('icomoon.woff') format('woff'),
+		font-url('icomoon.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+  font-size: 22px;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-patients:before {
+	content: "\e807";
+}
+.icon-team:before {
+	content: "\e802";
+}
+.icon-reports:before {
+	content: "\e800";
+}
+.icon-tasks:before {
+	content: "\e801";
+}
+.icon-tickets:before {
+	content: "\e803";
+}

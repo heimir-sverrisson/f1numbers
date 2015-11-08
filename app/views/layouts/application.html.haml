@@ -1,0 +1,6 @@
+= render layout: 'layouts/base' do
+  - if notice
+    %p.flash#alert-success= notice
+  -if alert
+    %p.flash#alert-danger= alert
+  = yield

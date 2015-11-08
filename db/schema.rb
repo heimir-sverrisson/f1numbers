@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028002200) do
+ActiveRecord::Schema.define(version: 20151107223832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,13 @@ ActiveRecord::Schema.define(version: 20151028002200) do
   add_index "countries", ["continent_id"], name: "index_countries_on_continent_id", using: :btree
 
   create_table "drivers", force: :cascade do |t|
-    t.string   "name",          null: false
+    t.string   "last_name",     null: false
     t.string   "nickname"
     t.date     "date_of_birth", null: false
     t.integer  "country_id",    null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "first_name",    null: false
   end
 
   add_index "drivers", ["country_id"], name: "index_drivers_on_country_id", using: :btree
@@ -61,14 +62,14 @@ ActiveRecord::Schema.define(version: 20151028002200) do
     t.boolean  "dnf"
     t.integer  "dnf_lap"
     t.integer  "points"
-    t.integer  "track_id"
+    t.integer  "race_id"
     t.integer  "driver_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   add_index "race_results", ["driver_id"], name: "index_race_results_on_driver_id", using: :btree
-  add_index "race_results", ["track_id"], name: "index_race_results_on_track_id", using: :btree
+  add_index "race_results", ["race_id"], name: "index_race_results_on_race_id", using: :btree
 
   create_table "races", force: :cascade do |t|
     t.datetime "qualifying_date"
@@ -127,12 +128,30 @@ ActiveRecord::Schema.define(version: 20151028002200) do
 
   add_index "tracks", ["country_id"], name: "index_tracks_on_country_id", using: :btree
 
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
   add_foreign_key "countries", "continents"
   add_foreign_key "drivers", "countries"
   add_foreign_key "qualifying_results", "drivers"
   add_foreign_key "qualifying_results", "tracks"
   add_foreign_key "race_results", "drivers"
-  add_foreign_key "race_results", "tracks"
+  add_foreign_key "race_results", "tracks", column: "race_id"
   add_foreign_key "races", "tracks"
   add_foreign_key "team_drivers", "drivers"
   add_foreign_key "team_drivers", "teams"

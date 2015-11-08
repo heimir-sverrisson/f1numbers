@@ -1,0 +1,13 @@
+.container-fluid
+  %span.section-header Drivers
+  .pull-right
+    - if user_signed_in?
+      = link_to 'Add Driver', new_driver_path, class: "btn btn-default edit"
+#content
+
+  %u1.drivers.clearfix
+    - @drivers.order(:first_name).each do |driver|
+      %li.result
+        - if user_signed_in?
+          = link_to('[Edit]', edit_driver_path(driver), class: 'driver-name')
+        = link_to(driver.name, driver_path(driver), class: 'driver-name')

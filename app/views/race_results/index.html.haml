@@ -1,0 +1,20 @@
+.container-fluid
+  .row.header-with-title-and-link
+    .col-xs-6
+      %h2.title Race Results
+    .link.col-xs-6.text-right
+      = link_to 'Add New Results', new_race_result_path, class: "btn btn-default edit"
+#content
+
+  %u1.race_results.clearfix
+    - @race_results.each do |result|
+      %li.result
+        %label Race
+        = link_to("#{result.race.track.name} #{result.race.race_date}",
+          race_path(result.race), class: 'name')
+        %label Driver
+        = link_to(result.driver.name, driver_path(result.driver), class: 'name')
+        %label Position
+        %span.position= result.position
+        %label Points
+        %span.points= result.points

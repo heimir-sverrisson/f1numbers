@@ -1,0 +1,12 @@
+- form_disabled = form_disabled.nil? ? false : form_disabled
+= bootstrap_form_for [@driver] do |f|
+  = f.text_field :first_name, label: 'First name'
+  = f.text_field :last_name, label: 'Last name'
+  = f.text_field :nickname, label: 'Nickname'
+  = f.text_field :date_of_birth, label: 'Date of Birth'
+  = f.select :country_id, @countries.map {|c| [c.name, c.id]}, label: 'Country'
+
+  - unless form_disabled
+    .form-group.text-right
+      = link_to('Cancel', drivers_path, class: 'btn btn-default cancel')
+      = f.submit 'Save', class: 'btn btn-default save'

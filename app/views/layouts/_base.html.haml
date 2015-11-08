@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1.0"}
+    %title F1 Numbers
+    %link{:href => "https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,600italic,400italic,700italic,300,300italic", :rel => "stylesheet", :type => "text/css"}
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    %span.page-header= 'F1 Numbers'
+    .pull-right
+      - if user_signed_in?
+        = link_to 'Logout', destroy_user_session_path, method: :delete,
+          class: "btn btn-default edit"
+      - else
+        = link_to 'Login', new_user_session_path,
+          class: "btn btn-default edit"
+    %hr
+    = yield

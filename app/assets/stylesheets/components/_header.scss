@@ -1,0 +1,23 @@
+.header-with-title-and-link {
+  .header-link {
+    color: $color-light-grey;
+    font-size: $type-h6;
+    &:before {
+      font-family: 'FontAwesome';
+      content: "\f067";
+      margin-right: 15px;
+      border: 1px solid $color-light-grey;
+      border-radius: 20px;
+      padding: 5px 6px;
+      color: $color-light-grey;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $color-mid-grey;
+      &:before {
+        background: $color-light-grey;
+        color: white;
+      }
+    }
+  }
+}

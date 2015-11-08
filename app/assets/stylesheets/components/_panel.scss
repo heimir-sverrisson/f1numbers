@@ -1,0 +1,53 @@
+.panel-heading {
+  position: relative;
+  padding: 15px;
+  min-height: 50px;
+
+  .edit, .save, .save-story, .save-concerns, .preference-edit, .preference-value-delete, .save-preference,
+    .note-edit, .note-delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding: 18px;
+    font-size: 16px;
+    color: $color-light-grey;
+    border-left: 1px solid $color-dark-grey;
+    &:hover, &:active {
+      text-decoration: none;
+      color: $color-text;
+    }
+  }
+
+  .save, .save-story, .save-concerns, .save-preference {
+    outline: 0;
+    background: none;
+    border: 0 none;
+    border-left: 1px solid $color-dark-grey;
+    font-size: $type-large;
+  }
+
+  .preference-edit, .note-edit {
+    right: 50px;
+    border: 0 none;
+    line-height: 15px;
+  }
+
+  .preference-value-delete, .note-delete {
+    font-size: $type-large;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 0 20px;
+    border-left: 1px solid $color-dark-grey;
+  }
+
+  h5 {
+    margin: 0;
+  }
+
+  .form-group {
+    width: 25%;
+    margin-bottom: 0px;
+  }
+}

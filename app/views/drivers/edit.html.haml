@@ -1,0 +1,6 @@
+.container-fluid
+  %h2.title #{@driver.name}
+#content
+  %div.row
+    %div.col-xs-6
+      = render partial: 'drivers/form', locals: {form_disabled: false}

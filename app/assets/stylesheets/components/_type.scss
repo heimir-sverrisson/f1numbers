@@ -1,0 +1,64 @@
+body {
+  color: $color-text-grey;
+}
+h1 {
+  font-size: $type-h1;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: $type-h2;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: $type-h3;
+  font-weight: 300;
+}
+
+h4 {
+  font-size: $type-h4;
+  font-weight: 300;
+}
+
+h5 {
+  font-size: $type-h5;
+  font-weight: 300;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+label {
+  font-weight: 300;
+}
+
+.page-header {
+  color: $color-red;
+  font-size: $type-h2;
+  border-bottom: 0 none;
+  font-weight: 700;
+  margin: 20px 0;
+  height: 45px;
+  padding: 0;
+}
+
+.driver-name {
+  color: $color-mid-red;
+  font-size: $type-h5;
+  font-weight: 400;
+}
+
+.section-header {
+  font-size: $type-h2;
+  font-weight: 300;
+}

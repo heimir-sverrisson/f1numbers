@@ -1,0 +1,91 @@
+body {
+  font-size: $type-small;
+  font-weight: 300;
+}
+.float-none {
+  float: none !important;
+}
+
+@mixin calc-vh($property, $expression) {
+  #{$property}: calc(#{$expression});
+}
+
+// Layout Variables
+$layout-padding: 15px;
+$layout-margin: $layout-padding;
+$navbar-padding: 52px;
+$sidebar-padding: 77px;
+$interior-header-padding: 86px;
+
+#main {
+  background-color: #F6F6F8;
+  min-height: 100vh;
+  margin-left: $sidebar-padding;
+  margin-top: 0;
+  #content-wrapper {
+    padding-left: 0px;
+    padding-top: $layout-padding;
+  }
+  #content {
+    @include calc-vh(min-height, 100vh - #{$layout-padding});
+    margin: 0 $layout-padding;
+  }
+  &.with-navbar {
+    padding-top: $navbar-padding;
+    #content {
+      @include calc-vh(min-height, 100vh - #{$navbar-padding} - #{$layout-padding});
+    }
+  }
+  &.with-interior-header {
+    #content {
+      @include calc-vh(min-height, 100vh - #{$layout-padding} - #{$interior-header-padding});
+    }
+    &.with-navbar {
+      #content {
+        @include calc-vh(min-height, 100vh - #{$navbar-padding} - #{$layout-padding} - #{$interior-header-padding});
+      }
+    }
+  }
+  &.with-patient-sidebar {
+    #content-wrapper {
+      padding-left: 250px;
+    }
+    #content {
+      margin: 0;
+    }
+  }
+  &.no-top-padding {
+    padding-top: 0;
+  }
+}
+
+#main-no-top-padding {
+  background-color: #F6F6F8;
+  min-height: 100vh;
+  margin-left: 77px;
+  padding: 0;
+}
+
+
+#content {
+  background: white;
+  border-radius: 5px 5px 0 0;
+  padding: $layout-padding;
+  box-shadow: 0px 0px 5px $color-dark-grey;
+  min-height: calc(100vh - 72px);
+  &.with-padding {
+    min-height: calc(100vh - 143px);
+  }
+}
+
+.section {
+  margin-bottom: $layout-margin;
+  padding-bottom: $layout-padding;
+  border-bottom: 1px solid $color-dark-grey;
+}
+
+.truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
