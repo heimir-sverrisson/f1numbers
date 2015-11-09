@@ -1,0 +1,8 @@
+.container-fluid
+  %h2.title #{@team.name}
+#content
+  %div.row
+    %div.col-xs-6
+      = render partial: 'teams/form', locals: {form_disabled: false}
+    %div.col-xs-6
+      = image_tag @team.file_name, size: "360x360"

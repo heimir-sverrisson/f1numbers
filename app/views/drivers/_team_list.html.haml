@@ -1,0 +1,5 @@
+%span.team-list-header In Formula One
+%u1.in_teams.clearfix
+  - @in_teams.each do |in_team|
+    %li.driver-name
+      =  in_team[:description]

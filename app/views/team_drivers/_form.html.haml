@@ -1,0 +1,14 @@
+- disabled = form_disabled.nil? ? false : form_disabled
+= bootstrap_form_for [@team_driver] do |f|
+  = f.select :driver_id, @drivers.map {|d| [d.name, d.id, {disabled: disabled}]},
+    label: 'Driver' 
+  = f.select :team_id, @teams.map {|t| [t.name, t.id, {disabled: disabled}]},
+    label: 'Driver' 
+  = f.text_field :started, label: 'Started', disabled: disabled
+  = f.text_field :ended, label: 'Ended', disabled: disabled
+  = f.text_field :notes, label: 'Notes', disabled: disabled
+
+  - unless disabled
+    .form-group.text-right
+      = link_to('Cancel', team_drivers_path, class: 'btn btn-default cancel')
+      = f.submit 'Save', class: 'btn btn-default save'

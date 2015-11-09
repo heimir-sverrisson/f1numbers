@@ -12,6 +12,7 @@ class DriversController < ApplicationController
   # GET /drivers/1
   # GET /drivers/1.json
   def show
+    set_in_teams
   end
 
   # GET /drivers/new
@@ -70,7 +71,24 @@ class DriversController < ApplicationController
     end
 
     private def set_countries
-      @countries = Country.all
+      @countries = Country.all.order(:name)
+    end
+
+    private def set_in_teams
+      @in_teams = []
+      connection = ActiveRecord::Base.connection
+      results = connection.
+        execute("SELECT date_part('year',td.started) AS year, t.name"\
+                " FROM team_drivers as td"\
+                " INNER JOIN teams as t on t.id = td.team_id"\
+                " WHERE td.driver_id = #{@driver.id}"\
+                " ORDER BY td.started desc")
+      results.each do |row|
+        year = row['year']
+        team = row['name']
+        description = "#{year} with #{team}"
+        @in_teams << { description: description }
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

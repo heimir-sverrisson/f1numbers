@@ -1,0 +1,8 @@
+.container-fluid
+  %h2.title #{@team_driver.title}
+#content
+  %div.row
+    %div.col-xs-6
+      = render partial: 'team_drivers/form', locals: {form_disabled: true}
+    %div.col-xs-6
+      = image_tag @team_driver.driver.file_name, size: "360x360"

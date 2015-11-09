@@ -58,7 +58,18 @@ label {
   font-weight: 400;
 }
 
+.team-name {
+  color: $color-mid-red;
+  font-size: $type-h4;
+  font-weight: 400;
+}
+
 .section-header {
   font-size: $type-h2;
+  font-weight: 300;
+}
+
+.team-list-header {
+  font-size: $type-h3;
   font-weight: 300;
 }

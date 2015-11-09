@@ -7,6 +7,6 @@ class Driver < ActiveRecord::Base
   end
 
   def file_name
-    "#{first_name} #{last_name}".downcase.gsub(/\s/,'_')
+    "drivers/#{first_name} #{last_name}".downcase.gsub(/\s/,'_')
   end
 end

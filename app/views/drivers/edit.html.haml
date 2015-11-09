@@ -4,3 +4,5 @@
   %div.row
     %div.col-xs-6
       = render partial: 'drivers/form', locals: {form_disabled: false}
+    %div.col-xs-6
+      = image_tag @driver.file_name, size: "360x360"

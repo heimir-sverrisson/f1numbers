@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :race_results
   resources :drivers
+  resources :teams
+  resources :team_drivers
   resources :races
   resources :tracks
 

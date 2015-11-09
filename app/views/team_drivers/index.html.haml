@@ -1,0 +1,14 @@
+.container-fluid
+  %span.section-header Drivers with teams
+  .pull-right
+    - if user_signed_in?
+      = link_to 'Add Driver to a team', new_team_driver_path,
+        class: "btn btn-default edit"
+#content
+
+  %u1.team_drivers.clearfix
+    - @team_drivers.each do |team_driver|
+      %li.result
+        - if user_signed_in?
+          = link_to('[Edit]', edit_team_driver_path(team_driver), class: 'driver-name')
+        = link_to( team_driver.title, team_driver_path(team_driver), class: 'driver-name')

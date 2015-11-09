@@ -27,7 +27,6 @@ gem 'layout_by_action'
 # Backend
 gem 'devise'
 gem 'rails', '4.2.4'
-gem 'jbuilder', '~> 2.0'
 
 group :development do
   gem 'web-console', '~> 2.0'

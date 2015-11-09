@@ -1,0 +1,13 @@
+.container-fluid
+  %span.section-header Teams
+  .pull-right
+    - if user_signed_in?
+      = link_to 'Add Team', new_team_path, class: "btn btn-default edit"
+#content
+
+  %u1.drivers.clearfix
+    - @teams.order(:name).each do |team|
+      %li.result
+        - if user_signed_in?
+          = link_to('[Edit]', edit_team_path(team), class: 'team-name')
+        = link_to(team.name, team_path(team), class: 'team-name')
