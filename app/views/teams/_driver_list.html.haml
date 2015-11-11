@@ -1,0 +1,5 @@
+%span.team-list-header Drivers
+%u1.with_drivers.clearfix
+  - @with_drivers.each do |with_driver|
+    %li.driver-name
+      =  link_to with_driver[:description], with_driver[:url]

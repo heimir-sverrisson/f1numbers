@@ -78,16 +78,21 @@ class DriversController < ApplicationController
       @in_teams = []
       connection = ActiveRecord::Base.connection
       results = connection.
-        execute("SELECT date_part('year',td.started) AS year, t.name"\
+        execute("SELECT date_part('year',td.started) AS year, t.name,"\
+                " td.notes"\
                 " FROM team_drivers as td"\
                 " INNER JOIN teams as t on t.id = td.team_id"\
                 " WHERE td.driver_id = #{@driver.id}"\
                 " ORDER BY td.started desc")
       results.each do |row|
         year = row['year']
-        team = row['name']
-        description = "#{year} with #{team}"
-        @in_teams << { description: description }
+        team_name = row['name']
+        notes = row['notes']
+        description = "#{year} with "
+        team = Team.find_by_name(team_name)
+        url = team_path(team)
+        @in_teams << { description: description, team_name: team_name,
+                       url: url, notes: notes }
       end
     end
 

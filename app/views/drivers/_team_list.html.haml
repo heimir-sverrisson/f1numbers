@@ -1,5 +1,8 @@
 %span.team-list-header In Formula One
 %u1.in_teams.clearfix
   - @in_teams.each do |in_team|
-    %li.driver-name
-      =  in_team[:description]
+    %li.in-teams
+      %span.driver-name
+        = in_team[:description]
+        = link_to in_team[:team_name], in_team[:url]
+        = in_team[:notes]
