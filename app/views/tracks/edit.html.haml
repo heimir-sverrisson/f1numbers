@@ -1,7 +1,8 @@
-%h1 Editing track
-
-= render 'form'
-
-= link_to 'Show', @track
-\|
-= link_to 'Back', tracks_path
+.container-fluid
+  %h2.title #{@track.name}
+#content
+  %div.row
+    %div.col-xs-6
+      = render partial: 'track/form', locals: {form_disabled: false}
+    %div.col-xs-6
+      = image_tag @track.file_name, size: "360x360"

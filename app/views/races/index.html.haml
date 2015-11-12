@@ -1,19 +1,14 @@
-%h1 Listing races
+.container-fluid
+  %span.section-header Races
+  .pull-right
+    - if user_signed_in?
+      = link_to 'Add Race', new_race_path, class: "btn btn-default edit"
+#content
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    - @races.each do |race|
-      %tr
-        %td= link_to 'Show', race
-        %td= link_to 'Edit', edit_race_path(race)
-        %td= link_to 'Destroy', race, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Race', new_race_path
+  %u1.races.clearfix
+    - @races.order(:race_date).each do |r|
+      - t = r.track
+      %li.result
+        - if user_signed_in?
+          = link_to '[Edit]', edit_race_path(r), class: 'team-name'
+        = link_to "#{t.name} in #{t.city},#{t.country.name}", track_path(t), class: 'team-name'

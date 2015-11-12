@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+  before_action :set_countries
   before_action :set_track, only: [:show, :edit, :update, :destroy]
 
   # GET /tracks
@@ -61,14 +62,19 @@ class TracksController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_track
-      @track = Track.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  private def set_track
+    @track = Track.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def track_params
-      params[:track]
-    end
+  private def set_countries
+    @countries = Country.all.order(:name)
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  private def track_params
+    params.require(:track).
+      permit(:city, :distance, :laps, :latitude, :year_started,
+             :longitude, :length, :name, :time_zone, :country_id)
+  end
 end

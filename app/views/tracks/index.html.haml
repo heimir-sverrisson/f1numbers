@@ -1,19 +1,13 @@
-%h1 Listing tracks
+.container-fluid
+  %span.section-header Tracks
+  .pull-right
+    - if user_signed_in?
+      = link_to 'Add Track', new_team_path, class: "btn btn-default edit"
+#content
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    - @tracks.each do |track|
-      %tr
-        %td= link_to 'Show', track
-        %td= link_to 'Edit', edit_track_path(track)
-        %td= link_to 'Destroy', track, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Track', new_track_path
+  %u1.tracks.clearfix
+    - @tracks.order(:name).each do |t|
+      %li.result
+        - if user_signed_in?
+          = link_to '[Edit]', edit_track_path(t), class: 'team-name'
+        = link_to "#{t.name} in #{t.city},#{t.country.name}", track_path(t), class: 'team-name'

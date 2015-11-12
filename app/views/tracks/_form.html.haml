@@ -1,10 +1,18 @@
-= form_for @track do |f|
-  - if @track.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@track.errors.count, "error")} prohibited this track from being saved:"
-      %ul
-        - @track.errors.full_messages.each do |msg|
-          %li= msg
+- disabled = form_disabled.nil? ? false : form_disabled
+= bootstrap_form_for [@track] do |f|
+  = f.text_field :name, label: 'Name', disabled: disabled
+  = f.text_field :city, label: 'City', disabled: disabled
+  = f.select :country_id, @countries.map {|c| [c.name, c.id, {disabled: disabled}]},
+    label: 'Country' 
+  = f.text_field :year_started, label: 'Year started', disabled: disabled
+  = f.text_field :length, label: 'Track length (m)', disabled: disabled
+  = f.text_field :laps, label: 'Number of laps', disabled: disabled
+  = f.text_field :distance, label: 'Race distance (m)', disabled: disabled
+  = f.text_field :time_zone, label: 'Time zone', disabled: disabled
+  = f.text_field :latitude, label: 'Latitude', disabled: disabled
+  = f.text_field :longitude, label: 'Longitude', disabled: disabled
 
-  .actions
-    = f.submit 'Save'
+  - unless disabled
+    .form-group.text-right
+      = link_to('Cancel', drivers_path, class: 'btn btn-default cancel')
+      = f.submit 'Save', class: 'btn btn-default save'

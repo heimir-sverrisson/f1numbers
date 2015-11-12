@@ -61,14 +61,14 @@ class RacesController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_race
-      @race = Race.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  private  def set_race
+    @race = Race.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def race_params
-      params[:race]
-    end
+  private def race_params
+    params.require(:race).
+      permit(:laps, :notes, :qualifying_date, :race_date, :weather)
+  end
 end

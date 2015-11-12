@@ -1,6 +1,8 @@
-%p#notice= notice
-
-
-= link_to 'Edit', edit_track_path(@track)
-\|
-= link_to 'Back', tracks_path
+.container-fluid
+  %h2.title #{@track.name}
+#content
+  %div.row
+    %div.col-xs-6
+      = render partial: 'tracks/form', locals: {form_disabled: true}
+    %div.col-xs-6
+      = image_tag @track.file_name, size: "360x360"
