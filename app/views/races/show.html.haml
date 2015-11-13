@@ -1,6 +1,8 @@
-%p#notice= notice
-
-
-= link_to 'Edit', edit_race_path(@race)
-\|
-= link_to 'Back', races_path
+.container-fluid
+  %h2.title #{@race.track.name} at #{@race.race_date} 
+#content
+  %div.row
+    %div.col-xs-6
+      = render partial: 'races/form', locals: {form_disabled: true, city: @race.track.city,
+        country_id: @race.track.country_id, track_name: @race.track.name,
+        track_laps: @race.track.laps}

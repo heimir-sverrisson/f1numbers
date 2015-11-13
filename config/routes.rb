@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   resources :drivers
   resources :teams
   resources :team_drivers
-  resources :races
-  resources :tracks
+  resources :tracks do
+    resources :races
+  end
 
   # Example resource route with options:
   #   resources :products do

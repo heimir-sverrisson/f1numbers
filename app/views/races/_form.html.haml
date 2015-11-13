@@ -1,10 +1,13 @@
-= form_for @race do |f|
-  - if @race.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@race.errors.count, "error")} prohibited this race from being saved:"
-      %ul
-        - @race.errors.full_messages.each do |msg|
-          %li= msg
+- disabled = form_disabled.nil? ? false : form_disabled
+= bootstrap_form_for [@track, @race] do |f|
 
-  .actions
-    = f.submit 'Save'
+  = f.text_field :qualifying_date, label: 'Qualifying date', disabled: disabled
+  = f.text_field :race_date, label: 'Race_date', disabled: disabled
+  = f.text_field :laps, label: 'Number of laps', disabled: disabled
+  = f.text_field :notes, label: 'Notes', disabled: disabled
+  = f.text_field :weather, label: 'Weather', disabled: disabled
+
+  - unless disabled
+    .form-group.text-right
+      = link_to('Cancel', drivers_path, class: 'btn btn-default cancel')
+      = f.submit 'Save', class: 'btn btn-default save'

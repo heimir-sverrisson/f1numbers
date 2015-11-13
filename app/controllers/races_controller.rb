@@ -1,10 +1,11 @@
 class RacesController < ApplicationController
+  before_action :set_track
   before_action :set_race, only: [:show, :edit, :update, :destroy]
 
   # GET /races
   # GET /races.json
   def index
-    @races = Race.all
+    @races = @track.races.order(:race_date)
   end
 
   # GET /races/1
@@ -61,12 +62,15 @@ class RacesController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
-  private  def set_race
+  private def set_race
     @race = Race.find(params[:id])
   end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+  private def set_track
+    @track = Track.find(params[:track_id])
+    Time.zone = @track.time_zone
+  end
+
   private def race_params
     params.require(:race).
       permit(:laps, :notes, :qualifying_date, :race_date, :weather)

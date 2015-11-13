@@ -2,13 +2,13 @@
   %span.section-header Races
   .pull-right
     - if user_signed_in?
-      = link_to 'Add Race', new_race_path, class: "btn btn-default edit"
+      = link_to 'Add Race', new_track_race_path(@track), class: "btn btn-default edit"
 #content
 
   %u1.races.clearfix
     - @races.order(:race_date).each do |r|
-      - t = r.track
       %li.result
         - if user_signed_in?
-          = link_to '[Edit]', edit_race_path(r), class: 'team-name'
-        = link_to "#{t.name} in #{t.city},#{t.country.name}", track_path(t), class: 'team-name'
+          = link_to '[Edit]', edit_track_race_path(:track_id, r), class: 'team-name'
+        = link_to "#{@track.name} at #{r.race_date}", 
+          track_race_path(@track, r), class: 'team-name'
