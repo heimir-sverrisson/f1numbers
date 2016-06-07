@@ -1,8 +1,9 @@
 .container-fluid
-  %h2.title #{@race.track.name} at #{@race.race_date} 
+  %h2.title #{@track.name} at #{@race.race_date} 
 #content
   %div.row
     %div.col-xs-6
-      = render partial: 'races/form', locals: {form_disabled: true, city: @race.track.city,
-        country_id: @race.track.country_id, track_name: @race.track.name,
-        track_laps: @race.track.laps}
+      = render partial: 'races/form', locals: {form_disabled: true }
+    %div.col-xs-6
+      = link_to image_tag("#{@track.file_name}", size: "360x360", longdesc: "#{@track.longdesc}"),
+        image_path(@track.file_name)

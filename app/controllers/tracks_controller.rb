@@ -75,6 +75,6 @@ class TracksController < ApplicationController
   private def track_params
     params.require(:track).
       permit(:city, :distance, :laps, :latitude, :year_started,
-             :longitude, :length, :name, :time_zone, :country_id)
+             :longitude, :length, :name, :time_zone, :country_id, :longdesc)
   end
 end

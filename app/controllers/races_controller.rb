@@ -43,8 +43,8 @@ class RacesController < ApplicationController
   def update
     respond_to do |format|
       if @race.update(race_params)
-        format.html { redirect_to @race, notice: 'Race was successfully updated.' }
-        format.json { render :show, status: :ok, location: @race }
+        format.html { redirect_to [@track, @race], notice: 'Race was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@track, @race] }
       else
         format.html { render :edit }
         format.json { render json: @race.errors, status: :unprocessable_entity }

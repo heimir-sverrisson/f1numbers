@@ -1,7 +1,8 @@
-%h1 Editing race
-
-= render 'form'
-
-= link_to 'Show', @race
-\|
-= link_to 'Back', races_path
+.container-fluid
+  %h2.title #{@track.name} at #{@race.race_date}
+#content
+  %div.row
+    %div.col-xs-6
+      = render partial: 'races/form', locals: { form_disabled: false }
+    %div.col-xs-6
+      = image_tag @track.file_name, size: '360x360', longdesc: @track.longdesc

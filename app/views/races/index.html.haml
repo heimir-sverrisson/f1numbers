@@ -9,6 +9,6 @@
     - @races.order(:race_date).each do |r|
       %li.result
         - if user_signed_in?
-          = link_to '[Edit]', edit_track_race_path(:track_id, r), class: 'team-name'
+          = link_to '[Edit]', edit_track_race_path(@track, r), class: 'team-name'
         = link_to "#{@track.name} at #{r.race_date}", 
           track_race_path(@track, r), class: 'team-name'

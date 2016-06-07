@@ -1,9 +1,10 @@
 .form-group {
-  margin: 20px 0;
+  margin: 10px 0;
   input.form-control {
-    border-radius: 3px;
+    border-radius: 2px;
     border-color: $color-dark-grey;
-    padding: 22px 12px;
+    padding: 10px 12px;
+    font-size: $type-medium;
   }
   &.has-error {
     input.form-control {

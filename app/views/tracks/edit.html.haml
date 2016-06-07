@@ -3,6 +3,6 @@
 #content
   %div.row
     %div.col-xs-6
-      = render partial: 'track/form', locals: {form_disabled: false}
+      = render partial: 'tracks/form', locals: {form_disabled: false, show_longdesc: true}
     %div.col-xs-6
-      = image_tag @track.file_name, size: "360x360"
+      = image_tag @track.file_name, size: "360x360", longdesc: @track.longdesc
