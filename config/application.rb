@@ -6,6 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module F1numbers
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -23,5 +24,6 @@ module F1numbers
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.web_console.whitelisted_ips = '192.168.0.0/16'
+    config.relative_url_root = "/f1"
   end
 end
